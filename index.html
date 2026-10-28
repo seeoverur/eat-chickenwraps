@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chicken Wraps in Charleston, SC | Eat Chicken Wraps</title>
+  <meta name="description" content="A local guide to the best chicken wraps in Charleston, SC — Sweet Palm Coffee on King Street, plus delis, cafés and food trucks across the city.">
+  <link rel="canonical" href="https://eat-chickenwraps.com/">
+  <meta property="og:title" content="Chicken Wraps in Charleston, SC">
+  <meta property="og:description" content="Where Charleston gets a good wrap, starting with Sweet Palm Coffee at 471 King Street.">
+  <meta property="og:url" content="https://eat-chickenwraps.com/">
+  <meta property="og:type" content="website">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* eat-chickenwraps.com — shared styles */
+    :root {
+      --palm: #1e4fa3;
+      --palm-dark: #0f2d63;
+      --cream: #ffffff;
+      --sand: #eef4fc;
+      --tomato: #2563eb;
+      --mustard: #8cc8ff;
+      --ink: #172033;
+      --muted: #5b6576;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.75;
+      font-size: 1.05rem;
+    }
+
+    h1, h2, h3, h4, .brand {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    a { color: var(--palm); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { color: var(--tomato); }
+
+    /* Nav */
+    .site-nav { background: var(--palm-dark); }
+    .site-nav .brand { color: #fff; font-size: 1.35rem; text-decoration: none; }
+    .site-nav .brand span { color: var(--mustard); }
+    .site-nav .nav-link { color: rgba(255,255,255,.82); font-weight: 500; }
+    .site-nav .nav-link:hover,
+    .site-nav .nav-link.active { color: #fff; }
+    .site-nav .navbar-toggler { border-color: rgba(255,255,255,.4); }
+    .site-nav .navbar-toggler-icon { filter: invert(1); }
+    .btn-order {
+      background: var(--tomato); color: #fff; border: 0; border-radius: 999px;
+      padding: .5rem 1.2rem; font-weight: 600;
+    }
+    .btn-order:hover { background: #1d4ed8; color: #fff; }
+
+    /* Hero */
+    .hero {
+      background:
+        radial-gradient(circle at 85% 20%, rgba(140,200,255,.22), transparent 45%),
+        linear-gradient(135deg, var(--palm) 0%, var(--palm-dark) 100%);
+      color: #fff;
+      padding: 5.5rem 0 4.5rem;
+    }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+    .hero .lead { color: rgba(255,255,255,.85); max-width: 640px; }
+    .hero .eyebrow { color: var(--mustard); }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: .14em; font-size: .78rem;
+      font-weight: 700; color: var(--tomato); margin-bottom: .75rem; display: block;
+    }
+    .btn-outline-light { border-radius: 999px; padding: .5rem 1.2rem; font-weight: 600; }
+
+    /* Sections */
+    .section { padding: 4.5rem 0; }
+    .section-sand { background: var(--sand); }
+    .section h2 { font-size: clamp(1.7rem, 3.2vw, 2.3rem); margin-bottom: 1.25rem; }
+    .prose { max-width: 760px; }
+    .prose p { margin-bottom: 1.25rem; }
+
+    /* Cards */
+    .food-card {
+      background: #fff; border: 0; border-radius: 18px; overflow: hidden;
+      box-shadow: 0 10px 30px rgba(15,45,99,.08); height: 100%;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .food-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(15,45,99,.12); }
+    .food-card .card-body { padding: 1.75rem; }
+    .food-card h3 { font-size: 1.45rem; }
+    .food-card .stretched-link { font-weight: 600; }
+
+    /* Photo slots — swap the div for an <img class="photo" ...> when you have photos */
+    .photo-slot, .photo {
+      width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+    }
+    .photo-slot {
+      background: linear-gradient(135deg, var(--sand), #d9e7f8);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: .85rem; letter-spacing: .08em; text-transform: uppercase;
+    }
+
+    /* Feature box (Sweet Palm callouts) */
+    .feature-box {
+      background: #fff; border-left: 6px solid var(--tomato); border-radius: 14px;
+      padding: 2rem 2.25rem; box-shadow: 0 10px 30px rgba(15,45,99,.06);
+    }
+    .feature-box h3 { font-size: 1.6rem; }
+    .badge-pick {
+      background: var(--mustard); color: var(--ink); font-weight: 700;
+      border-radius: 999px; padding: .35rem .8rem; font-size: .75rem;
+      text-transform: uppercase; letter-spacing: .08em;
+    }
+    .detail-list { list-style: none; padding: 0; margin: 0; }
+    .detail-list li { padding: .35rem 0; border-bottom: 1px dashed #d6e2f2; }
+    .detail-list li:last-child { border-bottom: 0; }
+    .detail-list strong { display: inline-block; min-width: 110px; }
+
+    /* CTA band */
+    .cta-band { background: var(--tomato); color: #fff; padding: 3.5rem 0; }
+    .cta-band h2 { color: #fff; }
+    .cta-band .btn-light { border-radius: 999px; font-weight: 600; padding: .6rem 1.4rem; color: var(--tomato); }
+
+    /* Footer */
+    .site-footer { background: var(--palm-dark); color: rgba(255,255,255,.75); padding: 3.5rem 0 2rem; font-size: .95rem; }
+    .site-footer a { color: rgba(255,255,255,.9); text-decoration: none; }
+    .site-footer a:hover { color: var(--mustard); }
+    .site-footer h4 { color: #fff; font-size: 1.1rem; margin-bottom: 1rem; }
+    .site-footer ul { list-style: none; padding: 0; }
+    .site-footer li { margin-bottom: .45rem; }
+    .site-footer .legal { border-top: 1px solid rgba(255,255,255,.12); margin-top: 2rem; padding-top: 1.5rem; font-size: .85rem; }
+
+    /* Forms */
+    .form-control { border-radius: 10px; padding: .7rem .9rem; border-color: #cfdcee; }
+    .form-control:focus { border-color: var(--palm); box-shadow: 0 0 0 .2rem rgba(30,79,163,.15); }
+    .btn-palm { background: var(--palm); color: #fff; border-radius: 999px; padding: .6rem 1.5rem; font-weight: 600; }
+    .btn-palm:hover { background: var(--palm-dark); color: #fff; }
+
+    @media (max-width: 767px) {
+      .hero { padding: 4rem 0 3.25rem; }
+      .section { padding: 3.25rem 0; }
+      .feature-box { padding: 1.5rem; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "Eat Chicken Wraps",
+        "url": "https://eat-chickenwraps.com/"
+      },
+      {
+        "@type": "CafeOrCoffeeShop",
+        "name": "Sweet Palm Coffee",
+        "url": "https://sweetpalmcoffee.com/",
+        "telephone": "+1-843-327-0347",
+        "servesCuisine": ["Coffee", "Wraps"],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "471 King Street",
+          "addressLocality": "Charleston",
+          "addressRegion": "SC",
+          "postalCode": "29403",
+          "addressCountry": "US"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg site-nav py-3">
+  <div class="container">
+    <a class="brand" href="index.html">Eat <span>Chicken</span> Wraps</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="chicken-caesar-wraps.html">Chicken Caesar Wraps</a></li>
+        <li class="nav-item"><a class="nav-link" href="breakfast-burritos.html">Breakfast Burritos</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item ms-lg-2"><a class="btn btn-order" href="https://www.toasttab.com/local/order/sweetpalmcoffee" target="_blank" rel="noopener">Order Sweet Palm</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <span class="eyebrow">Charleston, SC</span>
+    <h1 class="mb-3">Charleston's Best Chicken Wraps, From King Street to the Food Trucks</h1>
+    <p class="lead mb-4">Grilled, fried, caesar, buffalo or rolled in roti — a local guide to the places around the Lowcountry that make a wrap worth ordering, led by <a class="text-white fw-semibold" href="https://sweetpalmcoffee.com/" target="_blank" rel="noopener">Sweet Palm Coffee</a> downtown.</p>
+    <div class="d-flex flex-wrap gap-2">
+      <a class="btn btn-order" href="#sweet-palm">See the Top Pick</a>
+      <a class="btn btn-outline-light" href="#downtown">Browse Local Spots</a>
+    </div>
+  </div>
+</header>
+
+<!-- SWEET PALM FEATURE -->
+<section class="section" id="sweet-palm">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <!-- Swap for: <img class="photo rounded-4" src="images/sweet-palm-chicken-wrap.jpg" alt="Chicken caesar wrap and iced latte at Sweet Palm Coffee on King Street"> -->
+        <div class="photo-slot rounded-4">Sweet Palm wrap photo</div>
+      </div>
+      <div class="col-lg-6">
+        <span class="badge-pick">Our Top Pick</span>
+        <h2 class="mt-3">Sweet Palm Coffee on King Street</h2>
+        <p><a href="https://sweetpalmcoffee.com/" target="_blank" rel="noopener">Sweet Palm Coffee</a> at 471 King Street has turned its chicken caesar wrap into one of the most talked-about lunches on Upper King. Grilled chicken, crisp romaine, parmesan and dressing are rolled tight in a soft tortilla that holds up on the walk to Marion Square or back to class at the College of Charleston.</p>
+        <p>It's a coffee shop first, so the drink pairing is half the appeal — an iced latte, a cold foam creation or a Pink Palm strawberry-dragonfruit refresher rounds it out. <a href="https://www.toasttab.com/local/order/sweetpalmcoffee" target="_blank" rel="noopener">Order ahead online</a> to skip the lunch line, or read the full <a href="chicken-caesar-wraps.html">chicken caesar wrap guide</a>.</p>
+        <ul class="detail-list mt-3">
+          <li><strong>Address</strong> 471 King St, Charleston, SC 29403</li>
+          <li><strong>Phone</strong> <a href="tel:+18433270347">(843) 327-0347</a></li>
+          <li><strong>Order</strong> Chicken Caesar Wrap</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNTOWN -->
+<section class="section section-sand" id="downtown">
+  <div class="container">
+    <div class="prose">
+      <span class="eyebrow">On the Peninsula</span>
+      <h2>Downtown Wrap Spots Within Walking Distance</h2>
+      <p>The peninsula packs a lot of good handheld lunches into a few blocks. Beyond <a href="https://sweetpalmcoffee.com/" target="_blank" rel="noopener">Sweet Palm Coffee</a>, the longtime local favorite is <a href="https://www.toasttab.com/local/order/brown-dog-deli-225-calhoun-st" target="_blank" rel="noopener">Brown Dog Deli</a>, now at 225 Calhoun Street. Its "Tik Tok" Turkey Caesar Wrap built a following of its own, and the Folly Beach Crunch Wrap and Santa Fe Black Bean Wrap give non-chicken eaters something to order too.</p>
+      <p>Further down King, <a href="https://kickinchickenwestcoleman.com/" target="_blank" rel="noopener">Kickin' Chicken</a> has been a Charleston staple for decades, with a downtown location at 337 King Street and others around the area. Its CBLT Wrap comes with fried or grilled chicken, bacon, lettuce and tomato in a flour tortilla — a solid pick if you're watching a game at the bar. Near campus, <a href="https://www.caviarandbananas.com/" target="_blank" rel="noopener">Caviar &amp; Bananas</a> on George Street keeps its cases stocked with grab-and-go sandwiches, salads and chicken wraps for students between classes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AROUND THE AREA -->
+<section class="section">
+  <div class="container">
+    <div class="prose">
+      <span class="eyebrow">Around the Lowcountry</span>
+      <h2>Mount Pleasant, West Ashley and Beyond</h2>
+      <p><a href="https://www.eastbaydeli.com/" target="_blank" rel="noopener">East Bay Deli</a> started in Charleston and now has locations across the area, from Savannah Highway in West Ashley to Mount Pleasant and North Charleston. Its wrap lineup covers both sides of the chicken debate — a classic chicken caesar and a fried chicken wrap with cheddar and honey mustard on a sun-dried tomato tortilla.</p>
+      <p>For something lighter, Verde, the local salad shop with spots in Mount Pleasant, West Ashley and North Charleston's Park Circle area, will turn just about any salad on its menu into a wrap. In Mount Pleasant, <a href="https://www.chickensaladchick.com/" target="_blank" rel="noopener">Chicken Salad Chick</a> rolls its namesake into a tortilla for an easy lunch, and The Great Greek Mediterranean Grill fills warm pita with grilled chicken gyro-style for a different take on the same idea.</p>
+      <p>If you just need speed, the <a href="https://www.chick-fil-a.com/" target="_blank" rel="noopener">Chick-fil-A</a> Cool Wrap is on the menu at locations like Sam Rittenberg Boulevard in West Ashley. It's a reliable fallback, though a local spot will usually give you more chicken and better bread for about the same price.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOD TRUCK -->
+<section class="section section-sand">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-7 prose">
+        <span class="eyebrow">On Wheels</span>
+        <h2>Roti Rolls and the Food Truck Scene</h2>
+        <p>Charleston's first food truck is still one of its most creative. <a href="https://eatrotirolls.com/" target="_blank" rel="noopener">Roti Rolls</a> wraps its fillings in roti, a soft Indian flatbread, and mixes Southern, Caribbean and Asian flavors — think house-made kimchi, Creole mac 'n' cheese and candied bacon. The truck moves around town and shows up at festivals, so check its schedule before you go hunting.</p>
+        <p>Between trucks, delis and coffee shops, Charleston gives you plenty of ways to eat a wrap. For a consistently good chicken wrap and a great latte from the same counter, though, <a href="https://sweetpalmcoffee.com/" target="_blank" rel="noopener">Sweet Palm Coffee</a> on King Street is the place to start.</p>
+      </div>
+      <div class="col-lg-5">
+        <div class="card food-card">
+          <!-- Swap for: <img class="photo" src="images/chicken-caesar-wrap.jpg" alt="Grilled chicken caesar wrap cut in half"> -->
+          <div class="photo-slot">Chicken caesar wrap photo</div>
+          <div class="card-body">
+            <h3>The Caesar Wrap Guide</h3>
+            <p class="mb-3">A closer look at the chicken caesar wrap — what makes a good one and where to order it downtown.</p>
+            <a class="stretched-link" href="chicken-caesar-wraps.html">Read the guide &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container d-md-flex align-items-center justify-content-between gap-4">
+    <div>
+      <h2 class="mb-2">Hungry Now?</h2>
+      <p class="mb-3 mb-md-0">Sweet Palm Coffee &middot; 471 King Street &middot; Downtown Charleston</p>
+    </div>
+    <a class="btn btn-light" href="https://www.toasttab.com/local/order/sweetpalmcoffee" target="_blank" rel="noopener">Order Online</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-5">
+        <a class="brand fs-4" href="index.html" style="color:#fff">Eat <span style="color:var(--mustard)">Chicken</span> Wraps</a>
+        <p class="mt-3">An independent guide to chicken wraps in Charleston, South Carolina.</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="chicken-caesar-wraps.html">Chicken Caesar Wraps</a></li>
+          <li><a href="breakfast-burritos.html">Breakfast Burritos</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-4">
+        <h4>Featured Spot</h4>
+        <ul>
+          <li><a href="https://sweetpalmcoffee.com/" target="_blank" rel="noopener">Sweet Palm Coffee</a></li>
+          <li>471 King St, Charleston, SC 29403</li>
+          <li><a href="tel:+18433270347">(843) 327-0347</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">&copy; <span id="yr">2026</span> eat-chickenwraps.com &middot; Charleston, SC</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
